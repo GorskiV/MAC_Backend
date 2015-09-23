@@ -25,20 +25,37 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-Route::get('/user', [
+/*Route::get('/user', [
     'as' => 'user',
     'uses' => 'UsersDashboardController@index'
-]);
-Route::get('/admin', [
+]);*/
+/*Route::get('/admin', [
     'as' => 'admin',
-    'uses' => 'AdminController@home'
-]);
+    'uses' => 'AdminController@home',
+    'middleware'=>['admin']
+]);*/
 //Route::get('/vendor', [
 //    'as' => 'vendor',
 //    'uses' => 'UsersDashboardController@index'
 //]);
 
-Route::group(['prefix' => 'users', 'middleware' => ['auth']], function() {
+
+Route::group(['prefix' => 'user', 'middleware' => ['auth', 'users']], function() {
 # User profile
-    Route::get('dashboard', 'UsersDashboardController@index');
+    Route::get('/', 'UsersDashboardController@index');
 });
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function() {
+# Admin profile
+    Route::get('/', 'AdminController@home');
+    Route::get('/users', 'AdminUsersControler@index');
+});
+
+Route::group(['prefix' => 'vendor', 'middleware' => ['auth', 'vendor']], function() {
+# Vendor profile
+    Route::get('/', 'AdminController@home');
+    Route::get('/users', 'AdminUsersControler@index');
+});
+
+
+
