@@ -42,15 +42,21 @@
 </head>
 
 
-<body>
+<body style="background:#F7F7F7;">
 
 <div class="container text-center">
     <img src="images/logo_300.png" class="home-logo" alt="">
     <h1 class="home-title">Feedly</h1>
     <h2 class="home-text">Rate it, like you mean it.</h2>
+</div>
+<div class="col-xs-8 col-offset-xs-2 text-center">
+
+</div>
+<div class="col-xs-2 col-sm-offset-5 text-center">
     <div class="home-buttons">
-        <button type="button" class="btn btn-lg btn-sucess"><a href="{{ URL::to('/login') }}">Log In</a></button>
-        <button type="button" class="btn btn-lg btn-sucess"><a href="{{ URL::to('/registration') }}">Register</a></button>
+        <hr class="colorgraph">
+        <button type="button" class="btn btn-lg btn-sucess"><a href="{{ URL::to('auth/login') }}">Log In</a></button>
+        <button type="button" class="btn btn-lg btn-sucess"><a href="{{ URL::to('auth/register') }}">Register</a></button>
     </div>
 </div>
 
