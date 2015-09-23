@@ -30,7 +30,7 @@ Route::get('/admin', [
     'uses' => 'AdminController@home'
 ]);
 
-Route::group(['prefix' => 'users', 'middleware' => 'auth', 'namespace' => 'Users'], function() {
+Route::group(['prefix' => 'users', 'middleware' => ['auth']], function() {
 # User profile
-    Route::get('dashboard', 'DashboardController@index');
+    Route::get('dashboard', 'UsersDashboardController@index');
 });
