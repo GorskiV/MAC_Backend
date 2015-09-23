@@ -12,20 +12,20 @@
 
     <!-- Bootstrap core CSS -->
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="../fonts/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
 
     <!-- Custom styling plus plugins -->
-    <link href="css/custom.css" rel="stylesheet">
-    <link href="css/icheck/flat/green.css" rel="stylesheet">
+    <link href="../css/custom.css" rel="stylesheet">
+    <link href="../css/icheck/flat/green.css" rel="stylesheet">
 
 
-    <script src="js/jquery.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
 
     <!--[if lt IE 9]>
-    <script src="../assets/js/ie8-responsive-file-warning.js"></script>
+    <script src="../../assets/js/ie8-responsive-file-warning.js"></script>
     <![endif]-->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -45,31 +45,37 @@
         <div id="login" class="animate form">
             <section class="login_content">
                 <div class="text-center">
-                    <img src="images/logo_300.png" width="150px" alt="">
+                    <img src="../images/logo_300.png" width="150px" alt="">
                 </div>
-                <form>
-                    <h1>Log In</h1>
-                    <div>
-                        <input type="text" class="form-control" placeholder="Username" required="" />
-                    </div>
-                    <div>
-                        <input type="password" class="form-control" placeholder="Password" required="" />
-                    </div>
-                    <div>
-                        <a class="btn btn-default submit" href="index.html">Log in</a>
-                        <br><br>
-                        <a class="s" href="#">Lost your password?</a>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="separator">
 
-                        <p class="change_link">New to site?
-                            <a href="{{ URL::to('/registration') }}" class=""> Create Account </a>
-                        </p>
-                        <div class="clearfix"></div>
-                    </div>
-                </form>
-                <!-- form -->
+                {!! Form::model([
+                        'method' => 'post',
+                        'url' => ['auth/login'],
+                        'class' => 'form-horizontal',
+                        'id' => 'user-login-form'
+                ]) !!}
+                <div>
+                    {!! Form::text('email', null, ['class' => 'form-control', 'placeholder'=>'Email']) !!}
+                </div>
+                <div>
+                    {!! Form::password('password', null, ['class' => 'form-control', 'placeholder'=>'Password', 'type'=>'password']) !!}
+                </div>
+                <div>
+                    {!! Form::submit('Login', ['class' => 'btn btn-primary']) !!}
+                </div>
+                <div class="clearfix"></div>
+                <div class="separator">
+
+                    <p class="change_link">Already a member ?
+                        <a href="{{ URL::to('auth/login') }}" class=""> Log in </a>
+                    </p>
+                </div>
+
+                {!! Form::close() !!}
+                        <!-- form -->
+
+                @include('errors.errors')
+                        <!-- form -->
             </section>
             <!-- content -->
         </div>

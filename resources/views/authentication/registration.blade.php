@@ -12,14 +12,14 @@
 
     <!-- Bootstrap core CSS -->
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="../fonts/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
 
     <!-- Custom styling plus plugins -->
-    <link href="css/custom.css" rel="stylesheet">
-    <link href="css/icheck/flat/green.css" rel="stylesheet">
+    <link href="../css/custom.css" rel="stylesheet">
+    <link href="../css/icheck/flat/green.css" rel="stylesheet">
 
 
     <script src="js/jquery.min.js"></script>
@@ -39,41 +39,46 @@
 <body style="background:#F7F7F7;">
 
 <div class="">
-    <a class="hiddenanchor" id="toregister"></a>
-    <a class="hiddenanchor" id="tologin"></a>
 
     <div id="wrapper">
         <div id="login" class="animate form">
             <section class="login_content">
                 <div class="text-center">
-                    <img src="images/logo_300.png" width="150px" alt="">
+                    <img src="../images/logo_300.png" width="150px" alt="">
                 </div>
                 <form>
                     <h1>Register</h1>
-                    <div>
-                        <input type="text" class="form-control" placeholder="Username" required="" />
-                    </div>
-                    <div>
-                        <input type="email" class="form-control" placeholder="Email" required="" />
-                    </div>
-                    <div>
-                        <input type="password" class="form-control" placeholder="Password" required="" />
-                    </div>
-                    <div>
-                        <input type="password" class="form-control" placeholder="Repeat Password" required="" />
-                    </div>
-                    <div>
-                        <a class="btn btn-default submit" href="index.html">Submit</a>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="separator">
-
-                        <p class="change_link">Already a member ?
-                            <a href="{{ URL::to('/login') }}" class=""> Log in </a>
-                        </p>
-                    </div>
                 </form>
-                <!-- form -->
+                {!! Form::model([
+                        'method' => 'post',
+                        'url' => ['auth/register'],
+                        'class' => 'form-horizontal',
+                        'id' => 'user-registration-form'
+                ]) !!}
+                <div>
+                    {!! Form::text('email', null, ['class' => 'form-control', 'placeholder'=>'Email']) !!}
+                </div>
+                <div>
+                    {!! Form::password('password', null, ['class' => 'form-control', 'placeholder'=>'Password', 'type'=>'password']) !!}
+                </div>
+                <div>
+                    {!! Form::password('password_confirmation', null, ['class' => 'form-control', 'placeholder'=>'Repeat password']) !!}
+                </div>
+                <div>
+                    {!! Form::submit('Register', ['class' => 'btn btn-primary']) !!}
+                </div>
+                <div class="clearfix"></div>
+                <div class="separator">
+
+                    <p class="change_link">Already a member ?
+                        <a href="{{ URL::to('auth/login') }}" class=""> Log in </a>
+                    </p>
+                </div>
+
+                {!! Form::close() !!}
+                        <!-- form -->
+
+                @include('errors.errors')
             </section>
             <!-- content -->
         </div>

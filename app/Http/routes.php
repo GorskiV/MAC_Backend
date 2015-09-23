@@ -17,17 +17,20 @@ Route::get('/', [
     'uses' => 'PagesController@home'
 ]);
 
-Route::get('/login', [
-    'as' => 'login',
-    'uses' => 'PagesController@login'
-]);
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
-Route::get('/registration', [
-    'as' => 'registration',
-    'uses' => 'PagesController@register'
-]);
+// Registration routes...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::get('/admin', [
     'as' => 'admin',
     'uses' => 'AdminController@home'
 ]);
+
+Route::group(['prefix' => 'users', 'middleware' => 'auth', 'namespace' => 'Users'], function() {
+# User profile
+    Route::get('dashboard', 'DashboardController@index');
+});

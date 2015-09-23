@@ -12,10 +12,12 @@ class PagesController extends Controller
     return view('pages.home');
   }
 
-  //test
   public function login(){
     return view('authentication.login');
   }
+
+
+
   public function register(){
     return view('authentication.registration');
   }
