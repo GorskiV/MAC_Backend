@@ -3,13 +3,13 @@
 
                     <div class="menu_section">
                         <ul class="nav side-menu">
-                            <li><a><i class="fa fa-home"></i> Home</a>
+                            <li><a href="{{ URL::to('admin/') }}"><i class="fa fa-home"></i> Home</a>
                             </li>
                             <li><a><i class="fa fa-user"></i> Users <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
-                                    <li><a href="form.html">View all</a>
+                                    <li><a href="{{ URL::to('admin/users') }}">View all</a>
                                     </li>
-                                    <li><a href="form_advanced.html">Add new</a>
+                                    <li><a href="{{ URL::to('admin/adduser') }}">Add new</a>
                                     </li>
                                 </ul>
                             </li>
