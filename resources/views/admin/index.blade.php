@@ -54,8 +54,6 @@
 
                 @include('admin.partials.logo')
 
-                @include('admin.partials.userinfo')
-
                 <br />
 
                @include('admin.partials.sidebar')

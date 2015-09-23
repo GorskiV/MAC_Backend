@@ -25,10 +25,18 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
+Route::get('/user', [
+    'as' => 'user',
+    'uses' => 'UsersDashboardController@index'
+]);
 Route::get('/admin', [
     'as' => 'admin',
     'uses' => 'AdminController@home'
 ]);
+//Route::get('/vendor', [
+//    'as' => 'vendor',
+//    'uses' => 'UsersDashboardController@index'
+//]);
 
 Route::group(['prefix' => 'users', 'middleware' => ['auth']], function() {
 # User profile

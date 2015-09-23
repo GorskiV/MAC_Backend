@@ -23,11 +23,22 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    protected $redirectPath = '/admin';
+//    protected $redirectPath = '/user';
 
     protected $loginPath = '/auth/login';
 
     protected $redirectAfterLogout='/';
+
+    protected function authenticated($request, $user)
+    {
+        if($user->role_id == 1) {
+            return redirect()->intended('/admin');
+        } else if($user->role_id == 2){
+            return redirect()->intended('/user');
+        }
+
+        return redirect()->intended('/sdasj dsa;das');
+    }
 
     /**
      * Create a new authentication controller instance.
@@ -64,6 +75,7 @@ class AuthController extends Controller
         return User::create([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'role_id' => 2
         ]);
     }
 }
