@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentallela Alela! | </title>
+    <title>Feedly </title>
 
     <!-- Bootstrap core CSS -->
 
@@ -39,14 +39,16 @@
 <body style="background:#F7F7F7;">
 
 <div class="">
-    <a class="hiddenanchor" id="toregister"></a>
-    <a class="hiddenanchor" id="tologin"></a>
+
 
     <div id="wrapper">
         <div id="login" class="animate form">
             <section class="login_content">
+                <div class="text-center">
+                    <img src="images/logo_300.png" width="150px" alt="">
+                </div>
                 <form>
-                    <h1>Login Form</h1>
+                    <h1>Log In</h1>
                     <div>
                         <input type="text" class="form-control" placeholder="Username" required="" />
                     </div>
@@ -55,21 +57,16 @@
                     </div>
                     <div>
                         <a class="btn btn-default submit" href="index.html">Log in</a>
-                        <a class="reset_pass" href="#">Lost your password?</a>
+                        <br><br>
+                        <a class="s" href="#">Lost your password?</a>
                     </div>
                     <div class="clearfix"></div>
                     <div class="separator">
 
                         <p class="change_link">New to site?
-                            <a href="#" class="to_register"> Create Account </a>
+                            <a href="{{ URL::to('/registration') }}" class=""> Create Account </a>
                         </p>
                         <div class="clearfix"></div>
-                        <br />
-                        <div>
-                            <h1><i class="fa fa-paw" style="font-size: 26px;"></i> Gentelella Alela!</h1>
-
-                            <p>©2015 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-                        </div>
                     </div>
                 </form>
                 <!-- form -->

@@ -1,3 +1,20 @@
+.home-logo{
+    padding: 70px 0 20px 0;
+}
+h1.home-title{
+    color: #fff;
+    font-size: 120px;
+    font-weight: 100;
+}
+.home-buttons{
+    padding-top: 50px;
+}
+.home-text{
+    color: #fff;
+    font-size: 28px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
 body.nav-sm .container.body .left_col {
     width: 70px;
     padding: 0;
@@ -5760,58 +5777,7 @@ form:after {
     line-height: 20px;
     margin: 10px 0 30px;
 }
-.login_content h1:before,
-.login_content h1:after {
-    content: "";
-    height: 1px;
-    position: absolute;
-    top: 10px;
-    width: 27%;
-}
-.login_content h1:after {
-    background: rgb(126,126,126);
-    background: -moz-linear-gradient(left,  rgba(126,126,126,1) 0%, rgba(255,255,255,1) 100%);
-    background: -webkit-linear-gradient(left,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
-    background: -o-linear-gradient(left,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
-    background: -ms-linear-gradient(left,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
-    background: linear-gradient(left,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
-    right: 0;
-}
-.login_content h1:before {
-    background: rgb(126,126,126);
-    background: -moz-linear-gradient(right,  rgba(126,126,126,1) 0%, rgba(255,255,255,1) 100%);
-    background: -webkit-linear-gradient(right,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
-    background: -o-linear-gradient(right,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
-    background: -ms-linear-gradient(right,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
-    background: linear-gradient(right,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
-    left: 0;
-}
-.login_content h1:before,
-.login_content h1:after {
-    content: "";
-    height: 1px;
-    position: absolute;
-    top: 10px;
-    width: 20%;
-}
-.login_content h1:after {
-    background: rgb(126,126,126);
-    background: -moz-linear-gradient(left,  rgba(126,126,126,1) 0%, rgba(255,255,255,1) 100%);
-    background: -webkit-linear-gradient(left,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
-    background: -o-linear-gradient(left,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
-    background: -ms-linear-gradient(left,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
-    background: linear-gradient(left,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
-    right: 0;
-}
-.login_content h1:before {
-    background: rgb(126,126,126);
-    background: -moz-linear-gradient(right,  rgba(126,126,126,1) 0%, rgba(255,255,255,1) 100%);
-    background: -webkit-linear-gradient(right,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
-    background: -o-linear-gradient(right,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
-    background: -ms-linear-gradient(right,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
-    background: linear-gradient(right,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
-    left: 0;
-}
+
 .login_content form { margin: 20px 0; position: relative }
 .login_content form input[type="text"],
 .login_content form input[type="email"],
