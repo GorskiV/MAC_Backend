@@ -1,18 +1,36 @@
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+a, a:visited, a:focus, a:active, :visited, :focus, :active, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
+    text-decoration: none !important;
+}
+.btn{
+    background-color: #d9534f;
+    color: #fff !important;
+}
+.btn a{
+     color: #fff !important;
+ }
 .home-logo{
     padding: 70px 0 20px 0;
 }
 h1.home-title{
-    color: #fff;
-    font-size: 120px;
-    font-weight: 100;
+    font-family: 'Pacifico', cursive !important;
+    color: #D9534F;
+    font-size: 92px;
+}
+.logo-text{
+    font-family: 'Pacifico', cursive !important;
+    color: #D9534F;
+    font-size: 42px !important;
+    padding: 20px 0 !important;
 }
 .home-buttons{
     padding-top: 50px;
 }
 .home-text{
-    color: #fff;
+    color: #D9534F;
     font-size: 28px;
-    font-weight: 600;
+    padding-top: 40px;
+    font-weight: 300;
     text-transform: uppercase;
 }
 body.nav-sm .container.body .left_col {
@@ -274,17 +292,14 @@ body.nav-md .container.body .right_col {
 }
 /**  ------------------------------------------  **/
 
-blue,
 .blue {
     color: #3498DB;
 }
 
-purple,
 .purple {
     color: #9B59B6;
 }
 
-green,
 .green {
     color: #1ABB9C;
 }
@@ -293,12 +308,10 @@ green,
     color: #9CC2CB;
 }
 
-red,
 .red {
     color: #E74C3C;
 }
 
-dark,
 .dark {
     color: #34495E;
 }
@@ -2293,7 +2306,7 @@ a.star {
     width: 33px;
 }
 
-.list-btn-mail > cn {
+.list-btn-mail > li {
     background: none repeat scroll 0 0 #39B3D7;
     border-radius: 12px;
     color: #FFFFFF;
@@ -3239,7 +3252,6 @@ select.parsley-error {
     width: auto;
 }
 
-//----
 .daterangepicker .daterangepicker_start_input label,
 .daterangepicker .daterangepicker_end_input label {
     color: #333;
@@ -3316,7 +3328,6 @@ select.parsley-error {
     border: none;
 }
 
-//----
 .daterangepicker.single .ranges,
 .daterangepicker.single .calendar {
     float: none;
@@ -4128,7 +4139,7 @@ html > body > .ui-pnotify {
 /* *********  profile/social  **************************** */
 
 .social-sidebar,
-social-body {
+.social-body {
     float: right;
 }
 
@@ -5314,18 +5325,6 @@ ul.project_files li a i {
     margin-right: 5px;
 }
 
-.loading {
-    display: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: #fff url("../img/loading.gif") no-repeat center center;
-    opacity: .75;
-    filter: alpha(opacity=75);
-    z-index: 20140628;
-}
 /* *********  /image cropping  **************************** */
 /* *********  moris  **************************** */
 
@@ -5782,7 +5781,7 @@ form:after {
 .login_content form input[type="text"],
 .login_content form input[type="email"],
 .login_content form input[type="password"] {
-    -webkit-border-radius: 3px;
+    -webkit-border-radius: 3px !important;
     -moz-border-radius: 3px;
     -ms-border-radius: 3px;
     -o-border-radius: 3px;
@@ -5798,7 +5797,7 @@ form:after {
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
     border: 1px solid #c8c8c8;
-    color: #777;
+    color: #777!important;
     margin: 0 0 20px;
     width: 100%;
 }
@@ -5814,7 +5813,7 @@ form:after {
     border: 1px solid #A878AF;
     outline: none;
 }
-}
+
 #username { background-position: 10px 10px !important }
 #password { background-position: 10px -53px !important }
 .login_content form div a {
@@ -5847,7 +5846,7 @@ form:after {
     border-top: 1px solid #CFD5D9;
     padding: 15px 0;
 }
-login_content form input[type="submit"],#content form .submit{float: left; margin-left: 38px;}
+.login_content form input[type="submit"],#content form .submit{}
 .button a {
     background: url(http://cssdeck.com/uploads/media/items/8/8bcLQqF.png) 0 -112px no-repeat;
     color: #7E7E7E;
@@ -6308,4 +6307,15 @@ ul.notifications {
     color: #E9EDEF;
     float: right;
     opacity: 1;
+}
+
+.colorgraph {
+    height: 5px;
+    border-top: 0;
+    background: #c4e17f;
+    border-radius: 5px;
+    background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
 }

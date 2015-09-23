@@ -45,29 +45,35 @@
         <div id="login" class="animate form">
             <section class="login_content">
                 <div class="text-center">
-                    <img src="../images/logo_300.png" width="150px" alt="">
+                    <img src="../images/logo_300.png" width="100px" alt="">
+                    <h1 class="logo-text">Feddly</h1>
+                    <div class="colorgraph">
+                        <br>
                 </div>
-
+                    <form>
+                        <h1>Login</h1>
+                    </form>
                 {!! Form::model([
                         'method' => 'post',
                         'url' => ['auth/login'],
                         'class' => 'form-horizontal',
                         'id' => 'user-login-form'
                 ]) !!}
+
                 <div>
                     {!! Form::text('email', null, ['class' => 'form-control', 'placeholder'=>'Email']) !!}
                 </div>
                 <div>
-                    {!! Form::password('password', null, ['class' => 'form-control', 'placeholder'=>'Password', 'type'=>'password']) !!}
+                    {!! Form::password('password', ['class' => 'form-control', 'placeholder'=>'Password']) !!}
                 </div>
                 <div>
-                    {!! Form::submit('Login', ['class' => 'btn btn-primary']) !!}
+                    {!! Form::submit('Register', ['class' => 'btn btn-sucess col-xs-12']) !!}
                 </div>
                 <div class="clearfix"></div>
                 <div class="separator">
 
-                    <p class="change_link">Already a member ?
-                        <a href="{{ URL::to('auth/login') }}" class=""> Log in </a>
+                    <p class="change_link">Not a member?
+                        <a href="{{ URL::to('auth/register') }}" class=""> Register </a>
                     </p>
                 </div>
 
