@@ -52,6 +52,7 @@
                 <form>
                     <h1>Register</h1>
                 </form>
+                    @include('errors.errors')
                 {!! Form::model([
                         'method' => 'post',
                         'url' => ['auth/register'],
@@ -79,8 +80,6 @@
 
                 {!! Form::close() !!}
                         <!-- form -->
-
-                @include('errors.errors')
             </section>
             <!-- content -->
         </div>

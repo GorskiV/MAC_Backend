@@ -53,6 +53,8 @@
                     <form>
                         <h1>Login</h1>
                     </form>
+
+                    @include('errors.errors')
                 {!! Form::model([
                         'method' => 'post',
                         'url' => ['auth/login'],
@@ -67,7 +69,7 @@
                     {!! Form::password('password', ['class' => 'form-control', 'placeholder'=>'Password']) !!}
                 </div>
                 <div>
-                    {!! Form::submit('Register', ['class' => 'btn btn-sucess col-xs-12']) !!}
+                    {!! Form::submit('Login', ['class' => 'btn btn-sucess col-xs-12']) !!}
                 </div>
                 <div class="clearfix"></div>
                 <div class="separator">
@@ -78,10 +80,6 @@
                 </div>
 
                 {!! Form::close() !!}
-                        <!-- form -->
-
-                @include('errors.errors')
-                        <!-- form -->
             </section>
             <!-- content -->
         </div>
