@@ -16,4 +16,8 @@ class Project extends Model
     public function feedback(){
         return $this->hasMany('App\Feedback');
     }
+
+    public function creator(){
+        return $this->belongsTo('App\User');
+    }
 }
