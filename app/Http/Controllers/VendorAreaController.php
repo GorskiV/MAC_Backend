@@ -38,7 +38,7 @@ class VendorAreaController extends Controller
 
         $imageName = $request->name. '-' . $user->id . '.' .$request->file('photo')->getClientOriginalExtension();
         $imageName = $string = str_replace(' ', '', $imageName);
-        $imagePath = '/public/upload/images/' . $imageName;
+        $imagePath = '/upload/images/' . $imageName;
         $request->file('photo')->move(
             base_path() . '/public/upload/images/', $imageName
         );

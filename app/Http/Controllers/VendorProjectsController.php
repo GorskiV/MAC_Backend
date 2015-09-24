@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\ProjectUser;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class VendorProjectsController extends Controller
 {
@@ -22,12 +24,42 @@ class VendorProjectsController extends Controller
     }
 
     public function addUsersToProject($id){
+        $projectId = $id;
         $user = \Auth::user();
         $project = \App\Project::find($id);
-        $users = DB::statement('select users.* from users join projects_has_users on users.id = projects_has_users.user_id where'. $id.'=projects_has_users.project_id and users.role_id=2');
-        dd($users);
-        return view('owner.project.adduser', compact(['projects', 'user']));
+        $users = User::where('role_id', '=', '2')->get();
+        $project_users = ProjectUser::where('project_id', '=', $id)->get();
+        $result = [];
+
+        if(!count($project_users)){
+            foreach ($users as $u) {
+                $result[] = $u;
+            }
+        }else {
+            foreach ($project_users as $p) {
+                foreach ($users as $u) {
+                    if ($u->id != $p->user_id) {
+                        $result[] = $u;
+                    }
+                }
+            }
+        }
+        return view('owner.project.adduser', compact('projectId', 'user', 'result'));
     }
+
+    public function storeUsersToProject(){
+        $id = Input::get('id');
+        $users = Input::get('users');
+        foreach($users as $u){
+            $project_user = new ProjectUser();
+            $project_user->project_id = $id;
+            $project_user->user_id = $u;
+            $project_user->save();
+        }
+
+        return redirect('vendor/my-projects');
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -58,7 +90,15 @@ class VendorProjectsController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = \Auth::user();
+        $project = \App\Project::find($id);
+        $users = \App\Project::find($id)->projectUser;
+
+        $projectUsers = [];
+        foreach($users as $u){
+            $projectUsers[] =  \App\User::find($u->user_id);
+        }
+        return view('owner.project.index', compact('project', 'user', 'projectUsers'));
     }
 
     /**

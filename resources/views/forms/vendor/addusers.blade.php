@@ -1,13 +1,18 @@
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-12">
     @include('errors.errors')
-    <form id="edit-form" class="form-horizontal form-label-left" method="POST" action=>
-
         <div class="form-group">
             {!! Form::label('category', 'Choose Users', ['class' => 'col-md-3 control-label']) !!}
             <div class="col-md-6">
-                {!! Form::select('category[]',null,null,array('multiple'=>true,'class'=>'form fields')) !!}
+                <select id="example-multiple-selected" name="users[]" multiple="multiple">
+                    @foreach($result as $r)
+
+                        <option value="<?php echo $r->id; ?>"><?php echo $r->email; ?></option>
+
+                    @endforeach
+                </select>
             </div>
         </div>
+        <input type="text" value="{{$projectId}}" name="id" hidden>
 
         <div class="form-group">
             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">

@@ -64,7 +64,7 @@
                                         <td class=" ">{{$u->created_at != "" ? $u->created_at : "-"}}</td>
                                         <td class=" "><a href="{{ URL::to('vendor/my-projects/addusers') }}/{{$u->id}}"><i class="fa fa-plus-circle"></i></a></td>
                                         <td class=" "><a href="{{ URL::to('/admin/users/') }}/{{$u->id}}"><i class="fa fa-th-list"></i></a></td>
-                                        <td class=" last"><a href="{{ URL::to('/admin/users/') }}/{{$u->id}}"><i class="fa fa-search"></i></a> &nbsp;&nbsp;&nbsp;
+                                        <td class=" last"><a href="{{ URL::to('vendor/my-projects') }}/{{$u->id}}"><i class="fa fa-search"></i></a> &nbsp;&nbsp;&nbsp;
                                             <a href="{{ URL::to('/admin/users/edit') }}/{{$u->id}}"><i class="fa fa-pencil"></i></a>
                                         </td>
                                     </tr>

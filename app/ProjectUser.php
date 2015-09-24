@@ -8,7 +8,8 @@ class ProjectUser extends Model
 {
     //
     protected $table='projects_has_users';
-    protected $fillable=['projects_id', 'users_id'];
+    protected $fillable=['project_id', 'user_id'];
+    public $timestamps=false;
 
     public function projects(){
         return $this->belongsTo('App\User');

@@ -76,6 +76,7 @@ Route::group(['prefix' => 'vendor', 'middleware' => ['auth', 'vendor']], functio
     ]);
 
     Route::get('/my-projects', 'VendorProjectsController@index');
+    Route::get('/my-projects/{id}', 'VendorProjectsController@show');
 
     Route::get('/my-projects/addusers/{id}', 'VendorProjectsController@addUsersToProject');
     Route::post('/my-projects/addusers', [

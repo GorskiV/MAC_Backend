@@ -11,7 +11,8 @@
 
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('fonts/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('fonts/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/bootstrap-multiselect.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/custom.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/maps/jquery-jvectormap-2.0.1.css') }}">
@@ -85,8 +86,11 @@
 <!-- daterangepicker -->
 <script src="{!! asset('js/moment.min.js') !!}"></script>
 <script src="{!! asset('js/datepicker/daterangepicker.js') !!}"></script>
-
+<script src="{!! asset('js/bootstrap-multiselect.js') !!}"></script>
 <script src="{!! asset('js/custom.js') !!}"></script>
+<script type="text/javascript">
+    $('#example-multiple-selected').multiselect();
+</script>
 
 </body>
 </html>
