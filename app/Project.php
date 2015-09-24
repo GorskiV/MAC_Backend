@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     protected $table='projects';
-    protected $fillable=['name', 'description', 'photo', 'video'];
+    protected $fillable=['name', 'description', 'photo', 'video', 'feedback_types_id'];
 
     public function projectUser(){
         return $this->hasMany('App\ProjectUser');
@@ -19,5 +19,9 @@ class Project extends Model
 
     public function creator(){
         return $this->belongsTo('App\User');
+    }
+
+    public function projectType(){
+        return $this->belongsTo('App\ProjectType');
     }
 }

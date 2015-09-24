@@ -23,7 +23,8 @@
         'method' => 'post',
         'route' => ["vendorservice"],
         'class' => 'form-horizontal',
-        'id' => 'vendor-product-form'
+        'id' => 'vendor-product-form',
+        'files' => true
     ]) !!}
 
     @include('forms.vendor.service', ['btn' => 'Create'])

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class WebServiceController extends Controller
 {
@@ -135,10 +136,12 @@ class WebServiceController extends Controller
 
     public function getLogin($email, $password)
     {
-        $matchThese = ['email' => htmlspecialchars(trim($email)), 'password' => htmlspecialchars(trim($password))];
-        $loggedUser = \App\User::where($matchThese)->get();
-        return $loggedUser;
-
+        //$matchThese = ['email' => htmlspecialchars(trim($email)), 'password' => htmlspecialchars(trim($password))];
+        $user = \App\User::where('email', '=', $email)->first();
+        if(Hash::check($password, $user->password)){
+            return 'ok';
+        }else
+            return 'no';
     }
 
     public function getRegister($email, $password)
