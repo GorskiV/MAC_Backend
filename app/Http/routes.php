@@ -61,5 +61,20 @@ Route::group(['prefix' => 'vendor', 'middleware' => ['auth', 'vendor']], functio
     Route::get('/users', 'AdminUsersControler@index');
 });
 
+/**
+ * WebServiceRoutes
+ */
+
+Route::group(['prefix' => 'userjson', 'middleware' => ['auth', 'users']], function() {
+# User profile
+    Route::get('/projects/{id}', 'WebServiceController@getProjectListForUser');
+    Route::get('/projects/stat/{id}', 'WebServiceController@projectStatistic');
+    Route::get('/projects/creator/{id}', 'WebServiceController@projectCreator');
+    Route::get('/user/feedback/{id}', 'WebServiceController@usersFeedbacks');
+    Route::get('/user/info/{id}', 'WebServiceController@userInfo');
+    Route::get('/user/info/{id}', 'WebServiceController@userInfo');
+});
+
+
 
 
