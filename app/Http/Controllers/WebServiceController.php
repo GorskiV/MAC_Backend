@@ -88,9 +88,9 @@ class WebServiceController extends Controller
         //
     }
 
-    public function getProjectListForUser($id)
+    public function getProjectListForUser($email)
     {
-        $user = \App\User::find($id);
+        $user = \App\User::where('email', '=', $email)->first();
         $usersProjects = $user->projectUser;
         $projectList=array();
         foreach($usersProjects as $project){
@@ -114,16 +114,16 @@ class WebServiceController extends Controller
 
     }
 
-    public function usersFeedbacks($id)
+    public function usersFeedbacks($email)
     {
-        $usersFeedback = \App\User::find($id);
+        $usersFeedback = \App\User::where('email', '=', $email)->first();
         $usersFeedback->feedback;
         return $usersFeedback;
     }
 
-    public function userInfo($id)
+    public function userInfo($email)
     {
-        $userInfo = \App\User::where('email', '=', $id)->firstOrFail();
+        $userInfo = \App\User::where('email', '=', $email)->firstOrFail();
         return $userInfo;
     }
 
@@ -141,19 +141,22 @@ class WebServiceController extends Controller
         //$matchThese = ['email' => htmlspecialchars(trim($email)), 'password' => htmlspecialchars(trim($password))];
         $user = \App\User::where('email', '=', $email)->first();
         if(Hash::check($password, $user->password)){
-            return 'ok';
+            return compact('user');
         }else
             return 'no';
     }
 
-    public function getRegister($email, $password)
+    public function getRegister($email, $password, $first_name, $last_name)
     {
         $user=new User();
         $user->email=htmlspecialchars(trim($email));
         $user->password=bcrypt(htmlspecialchars(trim($password)));
+        $user->first_name=htmlspecialchars(trim($first_name));
+        $user->last_name=htmlspecialchars(trim($last_name));
         $user->role_id=2;
         if($user->save()){
-            return "ok";
+            \App\User::where('email', '=', $email)->first();
+            return compact('user');
         }else
             return "no";
     }
