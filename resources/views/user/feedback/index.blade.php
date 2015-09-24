@@ -14,22 +14,46 @@
 
 @section('content')
     <div class="x_title">
-        <h2>Give Feedlys</h2>
+        <h2>Highlighted Feedlys</h2>
 
         <div class="clearfix"></div>
     </div>
-    <div class="col-md-4">
-        <div class="x_panel fixed_height_390">
-            <div class="x_title">
-                <h2>Naziv projekta</h2>
-                <div class="clearfix"></div>
-            </div>
-            <div class="x_content">
+    @foreach($projectList as $p)
+        <div class="col-md-4">
+            <div class="x_panel fixed_height_390">
+                <div class="x_title">
+                    <h2>
+                        @if($p->feedback_types_id == 1)
+                            <b>Product Feedback: </b>
+                        @endif
+                        @if($p->feedback_types_id == 2)
+                            <b>Service Feedback: </b>
+                        @endif
+                        @if($p->feedback_types_id == 3)
+                            <b>Area Feedback: </b>
+                        @endif
+                        {{$p->name}}
+                    </h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><h5><i class="fa fa-star"></i></h5></li>
+                        <li><h5><i class="fa fa-star"></i></h5></li>
+                        <li><h5><i class="fa fa-star"></i></h5></li>
+                        <li><h5><i class="fa fa-star"></i></h5></li>
+                        <li><h5><i class="fa fa-star"></i></h5></li>
 
-                <div style="text-align: center; overflow: hidden; margin: 10px 5px 0;">
-                    <canvas id="canvas_line1" height="156" width="234" style="width: 234px; height: 156px;"></canvas>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                    <div style="text-align: center; overflow: hidden; margin: 10px 5px 0;" >
+                        <img src="{{URL::to('/')}}{{$p->photo}}" width="230" alt="">
+                        <br><br>
+                        <a href="{{ URL::to('user/feedback')}}/{{$p->id}}" class="btn btn-sucess">Give Feedly</a>
+                    </div>
+
                 </div>
             </div>
         </div>
-    </div>
+    @endforeach
 @endsection

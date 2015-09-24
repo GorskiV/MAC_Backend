@@ -16,8 +16,14 @@ class UserFeedbackController extends Controller
     public function index()
     {
         $user = \Auth::user();
-        //todo uzeti sve projekte za usera
-        return view('user.feedback.index', compact('user'));
+
+        $usersProjects = $user->projectUser;
+        $projectList = array();
+        foreach ($usersProjects as $project) {
+            $projectList[] = \App\Project::find($project->project_id);
+        }
+
+        return view('user.feedback.index', compact('user', 'projectList'));
     }
 
     /**
@@ -49,7 +55,15 @@ class UserFeedbackController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = \Auth::user();
+        $project = \App\Project::find($id);
+        $users = \App\Project::find($id)->projectUser;
+
+        $projectUsers = [];
+        foreach($users as $u){
+            $projectUsers[] =  \App\User::find($u->user_id);
+        }
+        return view('user.feedback.projectfeedback', compact('project', 'user'));
     }
 
     /**
