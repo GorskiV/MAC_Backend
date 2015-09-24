@@ -36,7 +36,9 @@ class VendorProductController extends Controller
         $project->name = $request->name;
         $project->description = $request->description;
 
-        $imageName = $request->name. '-' . $user->id . '.' .$request->file('photo')->getClientOriginalExtension();
+        $myStr = str_random(10);
+
+        $imageName = $request->name. '_' . $myStr .'-'. $user->id . '.' .$request->file('photo')->getClientOriginalExtension();
         $imageName = $string = str_replace(' ', '', $imageName);
         $imagePath = '/upload/images/' . $imageName;
         $request->file('photo')->move(

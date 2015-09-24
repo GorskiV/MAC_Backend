@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Feedback;
+use App\Http\Requests\FeedbackRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -42,9 +44,29 @@ class UserFeedbackController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id, FeedbackRequest $request)
     {
-        //
+
+        $feedback=new Feedback();
+        $feedback->rating=$request->count;
+        $feedback->comment=$request->comment;
+        $feedback->user_id=\Auth::user()->id;
+        $feedback->project_id=$request->projectID;
+
+        $myStr = str_random(10);
+        $imageName = $request->name. '_' . $myStr .'_'.   \Auth::user()->id . '.' .$request->file('photo')->getClientOriginalExtension();
+        $imageName = $string = str_replace(' ', '', $imageName);
+        $imagePath = '/upload/images/' . $imageName;
+        $request->file('photo')->move(
+            base_path() . '/public/upload/images/', $imageName
+        );
+
+        $feedback->photo = $imagePath;
+
+        if($feedback->save()) {
+            return redirect('user/feedback');
+        }else
+            return 'no';
     }
 
     /**

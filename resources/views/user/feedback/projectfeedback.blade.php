@@ -49,6 +49,7 @@
                 'id' => 'feedback-form',
                 'files' => true
             ]) !!}
+            @include('errors.errors')
             <div class="col-md-3">
                 <h4>Give rating <small>Please hover and click on a star</small></h4>
                 <div class="text-center">
@@ -58,6 +59,7 @@
                     <input type="text" id="count" name="rating" hidden>
                 </div>
             </div>
+            <input type="text" id="hiddenValue" name="projectID" hidden value={{$project->id}}>
             <div class="col-md-4">
                 <h4>Elaborate Rating <small>Please elaborate your rating</small></h4>
                 <div>

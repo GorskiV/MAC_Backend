@@ -24,12 +24,8 @@ class FeedbackRequest extends Request
     public function rules()
     {
         return [
-            'projects_id' => 'required',
-            'feedback_types_id' => 'required',
-            'users_id' => 'required',
             'rating' => 'required',
             'comment' => 'required',
-
         ];
     }
 }
