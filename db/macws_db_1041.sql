@@ -95,3 +95,38 @@ CREATE TABLE IF NOT EXISTS `macws_db`.`projects_has_users` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE IF NOT EXISTS `macws_db`.`feedbacks` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
+  `project_id` INT(11) NOT NULL COMMENT '',
+  `feedback_types_id` INT(11) NOT NULL COMMENT '',
+  `user_id` INT(10) UNSIGNED NOT NULL COMMENT '',
+  `rating` FLOAT NULL DEFAULT NULL COMMENT '',
+  `comment` VARCHAR(255) NULL DEFAULT NULL COMMENT '',
+  `lat` FLOAT(10,6) NULL DEFAULT NULL COMMENT '',
+  `long` FLOAT(10,6) NULL DEFAULT NULL COMMENT '',
+  `photo` VARCHAR(245) NULL DEFAULT NULL COMMENT '',
+  `video` VARCHAR(245) NULL DEFAULT NULL COMMENT '',
+  `created_at` TIMESTAMP NULL DEFAULT NULL COMMENT '',
+  `updated_at` TIMESTAMP NULL DEFAULT NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
+  INDEX `fk_feedbacks_projects1_idx` (`project_id` ASC)  COMMENT '',
+  INDEX `fk_feedbacks_users1_idx` (`user_id` ASC)  COMMENT '',
+  INDEX `fk_feedbacks_feedback_types1_idx` (`feedback_types_id` ASC)  COMMENT '',
+  CONSTRAINT `fk_feedbacks_feedback_types1`
+    FOREIGN KEY (`feedback_types_id`)
+    REFERENCES `macws_db`.`feedback_types` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_feedbacks_projects1`
+    FOREIGN KEY (`project_id`)
+    REFERENCES `macws_db`.`projects` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_feedbacks_users1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `macws_db`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
