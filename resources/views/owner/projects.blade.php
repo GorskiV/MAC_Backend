@@ -32,38 +32,44 @@
                             <thead>
                             <tr class="headings">
                                 <th>Project Name</th>
-                                <th>Description</th>
+                                <th>Type</th>
+                                <th>Created</th>
                                 <th>Feedbacks</th>
                                 <th>Rating</th>
+                                <th>Add Users</th>
+                                <th>Read Feedbacks</th>
                                 <th class=" no-link last"><span class="nobr">Action</span>
                                 </th>
                             </tr>
                             </thead>
                             <tbody>
-                            {{--@if($users->count()>0)--}}
-                                {{--@foreach($users as $u)--}}
-                                    {{--<tr class="pointer">--}}
-                                        {{--<td class=" ">{{$u->first_name != "" ? $u->first_name : "-"}}</td>--}}
-                                        {{--<td class=" ">{{$u->last_name != "" ? $u->last_name : "-"}} </td>--}}
-                                        {{--<td class=" ">{{$u->email != "" ? $u->email : "-"}} </td>--}}
-                                        {{--@if($u->role_id==1)--}}
-                                            {{--<td class=" ">Admin</td>--}}
-                                        {{--@endif--}}
-                                        {{--@if($u->role_id==2)--}}
-                                            {{--<td class=" ">User</td>--}}
-                                        {{--@endif--}}
-                                        {{--@if($u->role_id==3)--}}
-                                            {{--<td class=" ">Vendor</td>--}}
-                                        {{--@endif--}}
-                                        {{--@if($u->role_id==NULL)--}}
-                                            {{--<td class=" ">-</td>--}}
-                                        {{--@endif--}}
-                                        {{--<td class=" last"><a href="{{ URL::to('/admin/users/') }}/{{$u->id}}"><i class="fa fa-search"></i></a> &nbsp;&nbsp;&nbsp;--}}
-                                            {{--<a href="{{ URL::to('/admin/users/edit') }}/{{$u->id}}"><i class="fa fa-pencil"></i></a>--}}
-                                        {{--</td>--}}
-                                    {{--</tr>--}}
-                                {{--@endforeach--}}
-                            {{--@endif--}}
+                            @if($projects->count()>0)
+                                @foreach($projects as $u)
+                                    <tr class="pointer">
+                                        <td class=" ">{{$u->name != "" ? $u->name : "-"}}</td>
+                                        @if($u->feedback_types_id ==1)
+                                            <td class=" ">Product</td>
+                                        @endif
+                                        @if($u->feedback_types_id==2)
+                                            <td class=" ">Service</td>
+                                        @endif
+                                        @if($u->feedback_types_id==3)
+                                            <td class=" ">Area</td>
+                                        @endif
+                                        @if($u->feedback_types_id==NULL)
+                                            <td class=" ">-</td>
+                                        @endif
+                                        <td class=" ">{{$u->created_at != "" ? $u->created_at : "-"}}</td>
+                                        <td class=" ">{{$u->created_at != "" ? $u->created_at : "-"}}</td>
+                                        <td class=" ">{{$u->created_at != "" ? $u->created_at : "-"}}</td>
+                                        <td class=" "><a href="{{ URL::to('vendor/my-projects/addusers') }}/{{$u->id}}"><i class="fa fa-plus-circle"></i></a></td>
+                                        <td class=" "><a href="{{ URL::to('/admin/users/') }}/{{$u->id}}"><i class="fa fa-th-list"></i></a></td>
+                                        <td class=" last"><a href="{{ URL::to('/admin/users/') }}/{{$u->id}}"><i class="fa fa-search"></i></a> &nbsp;&nbsp;&nbsp;
+                                            <a href="{{ URL::to('/admin/users/edit') }}/{{$u->id}}"><i class="fa fa-pencil"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                             </tbody>
 
                         </table>
