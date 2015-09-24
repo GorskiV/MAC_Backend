@@ -16,7 +16,7 @@
     <div class="col-md-4">
         <div class="x_panel fixed_height_390">
             <div class="x_title">
-                <h2>Masaža sa sretnim završetkom</h2>
+                <h2>Naziv projekta</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
