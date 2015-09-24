@@ -109,15 +109,15 @@ Route::group(['prefix' => 'vendor', 'middleware' => ['auth', 'vendor']], functio
 
 Route::group(['prefix' => 'userjson', 'middleware' => ['auth', 'users']], function() {
 # User profile
-    Route::get('/user/projects/{id}', 'WebServiceController@getProjectListForUser');
+    Route::get('/user/projects/{email}', 'WebServiceController@getProjectListForUser');
     Route::get('/projects/stat/{id}', 'WebServiceController@projectStatistic');
     Route::get('/projects/creator/{id}', 'WebServiceController@projectCreator');
-    Route::get('/user/feedback/{id}', 'WebServiceController@usersFeedbacks');
-    Route::get('/user/info/{id}', 'WebServiceController@userInfo');
+    Route::get('/user/feedback/{email}', 'WebServiceController@usersFeedbacks');
+    Route::get('/user/info/{email}', 'WebServiceController@userInfo');
 });
 
 Route::get('authMobile/login/{email}/{password}', 'WebServiceController@getLogin');
-Route::get('authMobile/register/{email}/{password}', 'WebServiceController@getRegister');
+Route::get('authMobile/register/{email}/{password}/{first_name}/{last_name}', 'WebServiceController@getRegister');
 
 
 
