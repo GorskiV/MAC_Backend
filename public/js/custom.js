@@ -223,7 +223,7 @@ $(function () {
 $(document).ready(function () {
 
     $('#stars').on('starrr:change', function (e, value) {
-        $('#count').html(value);
+        $('#count').val(value.toString());
     });
 
 

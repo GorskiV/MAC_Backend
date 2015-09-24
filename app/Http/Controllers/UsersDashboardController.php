@@ -16,7 +16,14 @@ class UsersDashboardController extends Controller
     public function index()
     {
         $user = \Auth::user();
-        return view('user.index', compact('user'));
+
+        $usersProjects = $user->projectUser;
+        $projectList=array();
+        foreach($usersProjects as $project){
+            $projectList[]=\App\Project::find($project->project_id);
+        }
+
+        return view('user.index', compact('user', 'projectList'));
     }
 
     /**
