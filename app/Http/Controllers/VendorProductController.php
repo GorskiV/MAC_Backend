@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Project;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -24,9 +25,30 @@ class VendorProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Requests\ProductRequest $request)
     {
-        //
+        $user = \Auth::user();
+        $productType=1;
+
+        $project = new Project();
+        $project->creator = $user->id;
+        $project->feedback_types_id=$productType;
+        $project->name = $request->name;
+        $project->description = $request->description;
+
+        $imageName = $request->name. '-' . $user->id . '.' .$request->file('photo')->getClientOriginalExtension();
+        $imageName = $string = str_replace(' ', '', $imageName);
+        $imagePath = '/public/upload/images/' . $imageName;
+        $request->file('photo')->move(
+            base_path() . '/public/upload/images/', $imageName
+        );
+
+        $project->photo = $imagePath;
+
+        if($project->save()){
+            return redirect('vendor/my-projects');
+        };
+
     }
 
     /**

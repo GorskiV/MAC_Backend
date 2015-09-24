@@ -13,10 +13,6 @@ class Feedback extends Model
         return $this->belongsTo('App\Project');
     }
 
-    public function feedbackType(){
-        return $this->belongsTo('App\FeedbackType');
-    }
-
     public function users(){
         return $this->belongsTo('App\User');
     }
