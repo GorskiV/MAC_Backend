@@ -61,8 +61,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
 
 Route::group(['prefix' => 'vendor', 'middleware' => ['auth', 'vendor']], function() {
 # Vendor profile
-    Route::get('/', 'AdminController@home');
-    Route::get('/users', 'AdminUsersControler@index');
+    Route::get('/', 'VendorController@index');
+    Route::get('/profile', 'VendorProfileController@index');
+    Route::post('/profile/{id}', [
+        'as' => 'vendorupdate',
+        'uses' => 'VendorProfileController@update'
+    ]);
 });
 
 /**

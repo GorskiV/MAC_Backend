@@ -1,42 +1,102 @@
-<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{{ Auth::check() ? route('statuses_path') : route('home') }}">Larabook</a>
-        </div>
+<!-- top navigation -->
+<div class="top_nav">
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="active">{{ link_to_route('users_path', 'Browse Users') }}</li>
-            </ul>
+    <div class="nav_menu">
+        <nav class="" role="navigation">
 
-                <ul class="nav navbar-nav navbar-right">
-                    @if ($currentUser)
-                        <li class="dropdown">
-
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img class="nav-gravatar" src="{{ $currentUser->present()->gravatar }}" alt="{{ $currentUser->username }}">
-
-                                {{ $currentUser->username }} <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li>{{ link_to_route('profile_path', 'Your Profile', $currentUser->username) }}</li>
-                                <li><a href="#">Another action</a></li>
-                                <li class="divider"></li>
-                                <li>{{ link_to_route('logout_path', 'Log Out') }}</li>
-                            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;{{$user->email}}
+                        <span class=" fa fa-angle-down"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
+                        <li><a href="{{ URL::to('user/profile') }}">  Profile</a>
                         </li>
-                    @else
-                        <li>{{ link_to_route('register_path', 'Register') }}</li>
-                        <li>{{ link_to_route('login_path', 'Log In') }}</li>
-                    @endif
-                </ul>
-        </div>
+                        <li>
+                            <a href="javascript:;">Help</a>
+                        </li>
+                        <li><a href="{{ URL::to('auth/logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li role="presentation" class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="badge bg-green">6</span>
+                    </a>
+                    <ul id="menu1" class="dropdown-menu list-unstyled msg_list animated fadeInDown" role="menu">
+                        <li>
+                            <a>
+                                            <span class="image">
+                                        <img src="images/img.jpg" alt="Profile Image" />
+                                    </span>
+                                            <span>
+                                        <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                    </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                            <span class="image">
+                                        <img src="images/img.jpg" alt="Profile Image" />
+                                    </span>
+                                            <span>
+                                        <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                    </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                            <span class="image">
+                                        <img src="images/img.jpg" alt="Profile Image" />
+                                    </span>
+                                            <span>
+                                        <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                    </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                            <span class="image">
+                                        <img src="images/img.jpg" alt="Profile Image" />
+                                    </span>
+                                            <span>
+                                        <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                    </span>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="text-center">
+                                <a>
+                                    <strong><a href="inbox.html">See All Alerts</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
     </div>
-</nav>
+
+</div>
+<!-- /top navigation -->
