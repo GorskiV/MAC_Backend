@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class UsersDashboardController extends Controller
+class UserProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class UsersDashboardController extends Controller
     public function index()
     {
         $user = \Auth::user();
-        return view('user.index', compact('user'));
+        return view('user.profile', compact('user'));
     }
 
     /**

@@ -1,4 +1,6 @@
 <div class="navbar nav_title" style="border: 0;">
-    <a href="/admin" class="site_title"><i class="fa fa-bar-chart-o"></i> <span>Feddly</span></a>
+    <h1 class="logo-text-small text-center">Feedly</h1>
+    <hr class="colorgraph">
+    <br><br>
 </div>
 <div class="clearfix"></div>
