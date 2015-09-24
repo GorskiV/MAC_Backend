@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -33,7 +34,7 @@ class WebServiceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -44,7 +45,7 @@ class WebServiceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -55,7 +56,7 @@ class WebServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -66,8 +67,8 @@ class WebServiceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -78,7 +79,7 @@ class WebServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -86,79 +87,70 @@ class WebServiceController extends Controller
         //
     }
 
-    public function getProjectListForUser($id){
-
-        /*$projectList = DB::table('projects')
-            ->select('projects.name', 'projects.id', 'projects.photo')
-            ->where('projects_has_users.users_id', '=', $id)
-            ->where('projects_has_users.projects_id', '=', 'projects.id')
-            ->get();*/
-        /*$projectList = DB::table('projects')
-            ->join('projects_has_users', 'projects.id', '=', 'projects_has_users.projects_id')
-            ->join('projects_has_users', $id, '=', 'projects_has_users.users_id')
-            ->select('projects.name', 'projects.id', 'projects.photo')
-            ->get();*/
-
-//        /*$projectList = DB::table('projects')
-//            ->join('projects_has_users', 'projects.id', '=', 'projects_has_users.projects_id')
-//            ->join('users', 'users.id', '=', $id)
-//            ->select('projects.name', 'projects.id', 'projects.photo')
-//            ->get();*/
+    public function getProjectListForUser($id)
+    {
 
         $user = \App\User::find($id);
-        $projectList = $user->projectUser;
+        $projectList = \App\Project::where('creator', '=', $user->id)->firstOrFail();
 
         return $projectList;
     }
 
-    public function projectStatistic($id){
-        /*$projectStatistic = DB::table('projects')
-            ->where('finalized', 1)
-            ->avg('');*/
+    public function projectStatistic($id)
+    {
 
-        /*$projectDetails=$project=\App\Project::find($id);
-        $projectReviwers=$project->feedback->count();
-        return compact('projectDetails', 'projectReviwers');*/
+        $project = \App\Project::find($id);
+        $projectUserNum = $project->projectUser->count();
+        $projectFeedbackNum = $project->feedback->count();
+        $creator = \App\User::find($project->creator);
+        $averageRating = $project->feedback()
+            ->select(DB::raw('avg(rating)'))
+            ->first();
 
-        /*$projectDescription = DB::table('projects')
-            ->select('name', 'description', 'photo')
-            ->where('projects.id', '=', $id)
-            ->get(); //promjeni project_id
+        return compact('project', 'projectUserNum', 'projectFeedbackNum', 'projectRating', 'creator', 'averageRating');
 
-        $projectUserNum=\App\Project::find($id);
-        $projectUserNum->projectUser->count(); ////promjeni project_id
-
-        $projectFeedbackNum=\App\Project::find($id);
-        $projectFeedbackNum->feedback->count(); ////promjeni project_id*/
-
-
-        $projectRating = \App\Project::find($id);
-        $projectRating->feedback->avg('rating'); ////promjeni project_id
-        return compact('projectRating');
     }
 
-    public function usersFeedbacks($id){
-        $usersFeedback=\App\User::find($id);
+    public function usersFeedbacks($id)
+    {
+        $usersFeedback = \App\User::find($id);
         $usersFeedback->feedback;
-        return $usersFeedback; //Unknown column 'feedbacks.user_id'
+        return $usersFeedback;
     }
 
-    public function userInfo($id){
-        $userInfo=\App\User::where('email', '=', $id)->firstOrFail();
-        return $userInfo; //radi
+    public function userInfo($id)
+    {
+        $userInfo = \App\User::where('email', '=', $id)->firstOrFail();
+        return $userInfo;
     }
 
-    /**
-     * za dani projekt tko je kreator
-     * @param $id
-     * @return mixed
-     */
-    public function projectCreator($id){
-        $project=\App\Project::find($id);
+    public function projectCreator($id)
+    {
+        $project = \App\Project::find($id);
         $project->creator();
 
-        $creator=\App\User::find($project->creator);
-        return $creator; //radi
+        $creator = \App\User::find($project->creator);
+        return $creator;
+    }
+
+    public function getLogin($email, $password)
+    {
+        $matchThese = ['email' => htmlspecialchars(trim($email)), 'password' => htmlspecialchars(trim($password))];
+        $loggedUser = \App\User::where($matchThese)->get();
+        return $loggedUser;
+
+    }
+
+    public function getRegister($email, $password)
+    {
+        $user=new User();
+        $user->email=htmlspecialchars(trim($email));
+        $user->password=bcrypt(htmlspecialchars(trim($password)));
+        $user->role_id=2;
+        if($user->save()){
+            return "ok";
+        }else
+            return "no";
     }
 }
 
