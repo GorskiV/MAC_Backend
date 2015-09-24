@@ -93,12 +93,15 @@ class VendorProjectsController extends Controller
         $user = \Auth::user();
         $project = \App\Project::find($id);
         $users = \App\Project::find($id)->projectUser;
+        $feedbacks=\App\Feedback::where('project_id', '=', $id)->get();
 
         $projectUsers = [];
         foreach($users as $u){
             $projectUsers[] =  \App\User::find($u->user_id);
         }
-        return view('owner.project.index', compact('project', 'user', 'projectUsers'));
+
+
+        return view('owner.project.index', compact('project', 'user', 'projectUsers', 'feedbacks'));
     }
 
     /**
@@ -134,4 +137,6 @@ class VendorProjectsController extends Controller
     {
         //
     }
+
+
 }
