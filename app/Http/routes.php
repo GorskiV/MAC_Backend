@@ -67,6 +67,27 @@ Route::group(['prefix' => 'vendor', 'middleware' => ['auth', 'vendor']], functio
         'as' => 'vendorupdate',
         'uses' => 'VendorProfileController@update'
     ]);
+
+    Route::get('/my-projects', 'VendorProjectsController@index');
+
+
+    Route::get('/product-feedback', 'VendorProductController@index');
+    Route::post('/product-feedback', [
+        'as' => 'vendorproduct',
+        'uses' => 'VendorProductController@create'
+    ]);
+
+    Route::get('/service-feedback', 'VendorServiceController@index');
+    Route::post('/service-feedback', [
+        'as' => 'vendorservice',
+        'uses' => 'VendorServiceController@create'
+    ]);
+
+    Route::get('/area-feedback', 'VendorAreaController@index');
+    Route::post('/area-feedback', [
+        'as' => 'vendorarea',
+        'uses' => 'VendorAreaController@create'
+    ]);
 });
 
 /**

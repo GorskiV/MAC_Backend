@@ -18,14 +18,14 @@
     <link rel="stylesheet" href="{{ URL::asset('css/icheck/flat/green.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/floatexamples.css') }}">
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/nprogress.js"></script>
+    <script src="{!! asset('js/jquery.min.js') !!}"></script>
+    <script src="{!! asset('js/nprogress.js') !!}"></script>
     <script>
         NProgress.start();
     </script>
 
     <!--[if lt IE 9]>
-    <script src="../assets/js/ie8-responsive-file-warning.js"></script>
+    <script src="{!! asset('../assets/js/ie8-responsive-file-warning.js') !!}"></script>
     <![endif]-->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -73,20 +73,20 @@
 
 </div>
 
-<script src="js/bootstrap.min.js"></script>
+<script src="{!! asset('js/bootstrap.min.js') !!}"></script>
 
 <!-- chart js -->
-<script src="js/chartjs/chart.min.js"></script>
+<script src="{!! asset('js/chartjs/chart.min.js') !!}"></script>
 <!-- bootstrap progress js -->
-<script src="js/progressbar/bootstrap-progressbar.min.js"></script>
-<script src="js/nicescroll/jquery.nicescroll.min.js"></script>
+<script src="{!! asset('js/progressbar/bootstrap-progressbar.min.js') !!}"></script>
+<script src="{!! asset('js/nicescroll/jquery.nicescroll.min.js') !!}"></script>
 <!-- icheck -->
-<script src="js/icheck/icheck.min.js"></script>
+<script src="{!! asset('js/icheck/icheck.min.js') !!}"></script>
 <!-- daterangepicker -->
-<script type="text/javascript" src="js/moment.min.js"></script>
-<script type="text/javascript" src="js/datepicker/daterangepicker.js"></script>
+<script src="{!! asset('js/moment.min.js') !!}"></script>
+<script src="{!! asset('js/datepicker/daterangepicker.js') !!}"></script>
 
-<script src="js/custom.js"></script>
+<script src="{!! asset('js/custom.js') !!}"></script>
 
 </body>
 </html>

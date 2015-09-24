@@ -24,20 +24,6 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('password', 'New Password', ['class' => 'col-md-3 control-label']) !!}
-            <div class="col-md-6">
-                {!! Form::password('password', ['class' => 'form-control']) !!}
-            </div>
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('password_confirmed', 'Repeat New Password', ['class' => 'col-md-3 control-label']) !!}
-            <div class="col-md-6">
-                {!! Form::password('password_confirmed', ['class' => 'form-control']) !!}
-            </div>
-        </div>
-
-        <div class="form-group">
             {!! Form::label('address', 'Address', ['class' => 'col-md-3 control-label']) !!}
             <div class="col-md-6">
                 {!! Form::text('address', $user->address, ['class' => 'form-control']) !!}
