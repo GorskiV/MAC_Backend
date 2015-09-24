@@ -44,6 +44,10 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'users']], function()
 # User profile
     Route::get('/', 'UsersDashboardController@index');
     Route::get('/profile', 'UserProfileController@index');
+    Route::post('/profile/{id}', [
+        'as' => 'profileupdate',
+        'uses' => 'UserProfileController@update'
+    ]);
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function() {
