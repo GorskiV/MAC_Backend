@@ -71,7 +71,10 @@ class UserProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = \Auth::user();
+        $user->update($request->all());
+
+        return redirect('user/profile');
     }
 
     /**
