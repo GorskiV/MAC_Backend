@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Feedback extends Model
 {
     protected $table='feedbacks';
-    protected $fillable=['projects_id', 'feedback_types_id', 'users_id', 'rating', 'comment', 'long', 'lat', 'photo', 'video'];
+    protected $fillable=['project_id', 'user_id', 'rating', 'comment', 'long', 'lat', 'photo', 'video', 'created_at', 'updated_at'];
 
     public function projects(){
         return $this->belongsTo('App\Project');

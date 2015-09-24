@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Feedback;
 use App\Project;
 use App\User;
 use Illuminate\Http\Request;
@@ -107,7 +108,7 @@ class WebServiceController extends Controller
         $projectFeedbackNum = $project->feedback->count();
         $creator = \App\User::find($project->creator);
         $averageRating = $project->feedback()
-            ->select(DB::raw('avg(rating)'))
+            ->select(DB::raw('avg(rating) as rating'))
             ->first();
 
         return compact('project', 'projectUserNum', 'projectFeedbackNum', 'projectRating', 'creator', 'averageRating');
@@ -159,6 +160,38 @@ class WebServiceController extends Controller
             return compact('user');
         }else
             return "no";
+    }
+
+    public function feedbackStore($score, $comment, $geoLat, $geoLong, $photoData, $userEmail, $projectId){
+        $feedback=new Feedback();
+        $feedback->projects_id=htmlspecialchars(trim($projectId));
+        $feedback->rating=htmlspecialchars(trim($score));
+        $feedback->comment=htmlspecialchars(trim($comment));
+        $feedback->long=htmlspecialchars(trim($geoLong));
+        $feedback->lat=htmlspecialchars(trim($geoLat));
+
+        $feedback->photo=htmlspecialchars(trim($photoData));
+
+        /**
+         * image from base64
+         */
+        $data=$photoData;
+        $data = str_replace('data:image/jpeg;base64,', '', $data);
+        $data = str_replace(' ', '+', $data);
+        $data = base64_decode($data);
+        $file = '/public/upload/images/'. uniqid() . '.jpeg';
+        $success = file_put_contents($file, $data);
+        if($success){
+            $feedback->photo=$file;
+        }else{
+            $feedback->photo=null;
+        }
+        $user=\App\User::where('email', '=', htmlspecialchars(trim($userEmail)))->first();
+        $feedback->user_id=$user->id;
+        if($feedback->save()) {
+            return 'ok';
+        }else
+            return 'no';
     }
 }
 
