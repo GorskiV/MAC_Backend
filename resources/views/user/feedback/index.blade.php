@@ -14,7 +14,7 @@
 
 @section('content')
     <div class="x_title">
-        <h2>Highlighted Feedlys</h2>
+        <h2>Give Feedlys</h2>
 
         <div class="clearfix"></div>
     </div>

@@ -5,9 +5,10 @@
                         <ul class="nav side-menu">
                             <li><a href="{{ URL::to('user/') }}"><i class="fa fa-home"></i> Home</a>
                             </li>
+                            <li><a href="{{ URL::to('user/feedback') }}"><i class="fa fa-binoculars"></i> Give Feedlys</a>
                             <li><a><i class="fa fa-star"></i> My Feedlys</a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <!-- /sidebar menu -->
+<!-- /sidebar menu -->

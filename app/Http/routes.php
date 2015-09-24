@@ -48,6 +48,13 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'users']], function()
         'as' => 'profileupdate',
         'uses' => 'UserProfileController@update'
     ]);
+
+    Route::get('/feedback', 'UserFeedbackController@index');
+    Route::get('/feedback/{id}', 'UserFeedbackController@show');
+    Route::post('/feedback/{id}', [
+        'as' => 'userfeedback',
+        'uses' => 'UserFeedbackController@store'
+    ]);
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function() {
