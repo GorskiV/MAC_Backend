@@ -61,8 +61,33 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
 
 Route::group(['prefix' => 'vendor', 'middleware' => ['auth', 'vendor']], function() {
 # Vendor profile
-    Route::get('/', 'AdminController@home');
-    Route::get('/users', 'AdminUsersControler@index');
+    Route::get('/', 'VendorController@index');
+    Route::get('/profile', 'VendorProfileController@index');
+    Route::post('/profile/{id}', [
+        'as' => 'vendorupdate',
+        'uses' => 'VendorProfileController@update'
+    ]);
+
+    Route::get('/my-projects', 'VendorProjectsController@index');
+
+
+    Route::get('/product-feedback', 'VendorProductController@index');
+    Route::post('/product-feedback', [
+        'as' => 'vendorproduct',
+        'uses' => 'VendorProductController@create'
+    ]);
+
+    Route::get('/service-feedback', 'VendorServiceController@index');
+    Route::post('/service-feedback', [
+        'as' => 'vendorservice',
+        'uses' => 'VendorServiceController@create'
+    ]);
+
+    Route::get('/area-feedback', 'VendorAreaController@index');
+    Route::post('/area-feedback', [
+        'as' => 'vendorarea',
+        'uses' => 'VendorAreaController@create'
+    ]);
 });
 
 /**

@@ -3,8 +3,11 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Contracts\Routing\Middleware;
+use Illuminate\Contracts\Routing\ResponseFactory;
 
-class Vendor
+class Vendor implements Middleware
 {
     /**
      * The Guard implementation.

@@ -35,6 +35,8 @@ class AuthController extends Controller
             return redirect()->intended('/admin');
         } else if($user->role_id == 2){
             return redirect()->intended('/user');
+        } else if($user->role_id == 3){
+            return redirect()->intended('/vendor');
         }
 
         return redirect()->intended('/sdasj dsa;das');
