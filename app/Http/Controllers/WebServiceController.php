@@ -90,10 +90,12 @@ class WebServiceController extends Controller
 
     public function getProjectListForUser($id)
     {
-
         $user = \App\User::find($id);
-        $projectList = \App\Project::where('creator', '=', $user->id)->firstOrFail();
-
+        $usersProjects = $user->projectUser;
+        $projectList=array();
+        foreach($usersProjects as $project){
+            $projectList[]=\App\Project::find($project->project_id);
+        }
         return $projectList;
     }
 

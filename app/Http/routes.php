@@ -101,7 +101,7 @@ Route::group(['prefix' => 'vendor', 'middleware' => ['auth', 'vendor']], functio
  * WebServiceRoutes
  */
 
-Route::group(['prefix' => 'userjson', 'middleware' => ['auth']], function() {
+Route::group(['prefix' => 'userjson', 'middleware' => ['auth', 'users']], function() {
 # User profile
     Route::get('/user/projects/{id}', 'WebServiceController@getProjectListForUser');
     Route::get('/projects/stat/{id}', 'WebServiceController@projectStatistic');
