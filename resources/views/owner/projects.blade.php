@@ -30,22 +30,21 @@
                     <div class="x_content">
                         <table id="example" class="table table-striped responsive-utilities jambo_table">
                             <thead>
-                            <tr class="headings">
-                                <th>Project Name</th>
-                                <th>Type</th>
-                                <th>Created</th>
-                                <th>Feedbacks</th>
-                                <th>Rating</th>
-                                <th>Add Users</th>
-                                <th>Read Feedbacks</th>
-                                <th class=" no-link last"><span class="nobr">Action</span>
+                            <tr class="headings text-center">
+                                <th class="text-center">Project Name</th>
+                                <th class="text-center">Type</th>
+                                <th class="text-center">Created</th>
+                                <th class="text-center">Feedbacks</th>
+                                <th class="text-center">Rating</th>
+                                <th class="text-center">Add Users</th>
+                                <th class=" no-link last text-center"><span class="nobr">Details</span>
                                 </th>
                             </tr>
                             </thead>
                             <tbody>
                             @if($projects->count()>0)
                                 @foreach($projects as $u)
-                                    <tr class="pointer">
+                                    <tr class="pointer text-center">
                                         <td class=" ">{{$u->name != "" ? $u->name : "-"}}</td>
                                         @if($u->feedback_types_id ==1)
                                             <td class=" ">Product</td>
@@ -63,9 +62,7 @@
                                         <td class=" ">{{$u->created_at != "" ? $u->created_at : "-"}}</td>
                                         <td class=" ">{{$u->created_at != "" ? $u->created_at : "-"}}</td>
                                         <td class=" "><a href="{{ URL::to('vendor/my-projects/addusers') }}/{{$u->id}}"><i class="fa fa-plus-circle"></i></a></td>
-                                        <td class=" "><a href="{{ URL::to('/admin/users/') }}/{{$u->id}}"><i class="fa fa-th-list"></i></a></td>
-                                        <td class=" last"><a href="{{ URL::to('vendor/my-projects') }}/{{$u->id}}"><i class="fa fa-search"></i></a> &nbsp;&nbsp;&nbsp;
-                                            <a href="{{ URL::to('/admin/users/edit') }}/{{$u->id}}"><i class="fa fa-pencil"></i></a>
+                                        <td class=" last"><a href="{{ URL::to('vendor/my-projects') }}/{{$u->id}}"><i class="fa fa-search"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

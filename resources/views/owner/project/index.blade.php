@@ -60,14 +60,14 @@
                                     @if($u->photo != null)
                                         <a href="{{URL::to('/')}}{{$u->photo}}" alt=""><i class="fa fa-image"></i> Display Image</a>
                                     @else
-                                        <i class="fa fa-"></i>
+                                        -
                                     @endif
                                 </td>
                                     <td class=" ">
                                         @if($u->lat != null && $u->long != null)
-                                            <a href="http://maps.google.com/maps?z=18&q={{$u->lat}},{{$u->long}}" alt=""><i class="fa fa-map"></i> Display Map</a>
+                                            <a href="http://maps.google.com/maps?z=18&q={{$u->lat}},{{$u->long}}" alt=""><i class="fa fa-map-marker"></i> Display Map</a>
                                         @else
-
+                                            -
                                         @endif
                                     </td>
                             </tr>
