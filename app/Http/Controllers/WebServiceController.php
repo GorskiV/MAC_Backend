@@ -164,17 +164,13 @@ class WebServiceController extends Controller
 
     public function feedbackStore($score, $comment, $geoLat, $geoLong, $photoData, $userEmail, $projectId){
         $feedback=new Feedback();
-        $feedback->projects_id=htmlspecialchars(trim($projectId));
+        $feedback->project_id=htmlspecialchars(trim($projectId));
         $feedback->rating=htmlspecialchars(trim($score));
         $feedback->comment=htmlspecialchars(trim($comment));
         $feedback->long=htmlspecialchars(trim($geoLong));
         $feedback->lat=htmlspecialchars(trim($geoLat));
 
-        $feedback->photo=htmlspecialchars(trim($photoData));
-
-        /**
-         * image from base64
-         */
+        /*$feedback->photo=htmlspecialchars(trim($photoData));
         $data=$photoData;
         $data = str_replace('data:image/jpeg;base64,', '', $data);
         $data = str_replace(' ', '+', $data);
@@ -185,8 +181,9 @@ class WebServiceController extends Controller
             $feedback->photo=$file;
         }else{
             $feedback->photo=null;
-        }
+        }*/
         $user=\App\User::where('email', '=', htmlspecialchars(trim($userEmail)))->first();
+        //dd($user->id);
         $feedback->user_id=$user->id;
         if($feedback->save()) {
             return 'ok';
