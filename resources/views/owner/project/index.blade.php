@@ -31,10 +31,11 @@
         <div class="x_panel">
             <div class="x_title">
                 <h2>Project Feedbacks</h2>
+                <a href="#" class="export">Export Table data into Excel</a>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content text-center">
-                <table id="example" class="table table-striped responsive-utilities jambo_table">
+                <table id="dvData" class="table table-striped responsive-utilities jambo_table">
                     <thead>
                     <tr class="headings text-center">
                         <th class="text-center">User</th>
@@ -48,7 +49,7 @@
                         @foreach($feedbacks as $u)
                             <tr class="pointer">
                                 @foreach($projectUsers as $pu)
-                                    @if($pu->id == $u->id)
+                                    @if($pu->id == $u->user_id)
                                         <td class=" ">{{$pu->email}}</td>
                                     @endif
                                 @endforeach
