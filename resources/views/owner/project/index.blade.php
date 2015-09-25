@@ -31,7 +31,10 @@
         <div class="x_panel">
             <div class="x_title">
                 <h2>Project Feedbacks</h2>
-                <a href="#" class="export">Export Table data into Excel</a>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a href="#" id="btnExport" class="" ><i class="fa fa-file-excel-o"></i> Export data into Excel</a></a>
+                    </li>
+                </ul>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content text-center">

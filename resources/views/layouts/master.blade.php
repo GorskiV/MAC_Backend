@@ -94,58 +94,53 @@
     $('#example-multiple-selected').multiselect();
 </script>
 <script>
-$(document).ready(function () {
+    $("#btnExport ").on('click', function (event) {
+        //Get table
+        var table = $("#dvData")[0];
 
-function exportTableToCSV($table, filename) {
+        //Get number of rows/columns
+        var rowLength = table.rows.length;
+        var colLength = table.rows[0].cells.length;
 
-var $rows = $table.find('tr:has(td)'),
+        //Declare string to fill with table data
+        var tableString = "";
 
-// Temporary delimiter characters unlikely to be typed by keyboard
-// This is to avoid accidentally splitting the actual contents
-tmpColDelim = String.fromCharCode(11), // vertical tab character
-tmpRowDelim = String.fromCharCode(0), // null character
+        //Get column headers
+        for (var i = 0; i < colLength; i++) {
+            tableString += table.rows[0].cells[i].innerHTML.split(",").join("") + ",";
+        }
 
-// actual delimiter characters for CSV format
-colDelim = '","',
-rowDelim = '"\r\n"',
+        tableString = tableString.substring(0, tableString.length - 1);
+        tableString += "\r\n";
 
-// Grab text from table into CSV formatted string
-csv = '"' + $rows.map(function (i, row) {
-var $row = $(row),
-$cols = $row.find('td');
+        //Get row data
+        for (var j = 1; j < rowLength; j++) {
+            for (var k = 0; k < colLength; k++) {
+                tableString += table.rows[j].cells[k].innerHTML.split(",").join("") + ",";
+            }
+            tableString += "\r\n";
+        }
 
-return $cols.map(function (j, col) {
-var $col = $(col),
-text = $col.text();
+        //Save file
+        if (navigator.appName == "Microsoft Internet Explorer") {
+            //Optional: If you run into delimiter issues (where the commas are not interpreted and all data is one cell), then use this line to manually specify the delimeter
+            tableString = 'sep=,\r\n' + tableString;
 
-return text.replace(/"/g, '""'); // escape double quotes
+            myFrame.document.open("text/html", "replace");
+            myFrame.document.write(tableString);
+            myFrame.document.close();
+            myFrame.focus();
+            myFrame.document.execCommand('SaveAs', true, 'data.csv');
+        } else {
+            csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(tableString);
+            $(event.target).attr({
+                'href': csvData,
+                'target': '_blank',
+                'download': 'feedly_data.csv'
+            });
+        }
+    });
 
-}).get().join(tmpColDelim);
-
-}).get().join(tmpRowDelim)
-.split(tmpRowDelim).join(rowDelim)
-.split(tmpColDelim).join(colDelim) + '"',
-
-// Data URI
-csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
-
-$(this)
-.attr({
-'download': filename,
-'href': csvData,
-'target': '_blank'
-});
-}
-
-// This must be a hyperlink
-$(".export").on('click', function (event) {
-// CSV
-exportTableToCSV.apply(this, [$('#dvData>table'), 'export.csv']);
-
-// IF CSV, don't do event.preventDefault() or return false
-// We actually need this to be a typical hyperlink
-});
-});
 </script>
 </body>
 </html>
