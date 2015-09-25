@@ -45,7 +45,7 @@
             <section class="login_content">
                 <div class="text-center">
                     <img src="../images/logo_300.png" width="150px" alt="">
-                    <h1 class="logo-text">Feddly</h1>
+                    <h1 class="logo-text">Feedly</h1>
                     <div class="colorgraph">
                         <br>
                 </div>

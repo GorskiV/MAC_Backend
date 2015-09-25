@@ -56,7 +56,7 @@
                     <br><br>
                     <div id="stars" class="starrr lead glyphicon-3x" style="font-size: 42px !important;"></div>
 
-                    <input type="text" id="count" name="rating" hidden>
+                    <input type="text" id="count" name="count" value="" class="" style="width: 25px; padding-left: 7px;" hidden>
                 </div>
             </div>
             <input type="text" id="hiddenValue" name="projectID" hidden value={{$project->id}}>
@@ -68,7 +68,7 @@
 
             </div>
             <div class="col-md-4">
-                <h4>Attach Media <small>You can provide additional media and geolocation</small></h4>
+                <h4>Attach Media <small>You can provide additional media</small></h4>
                 <br>
                 <div class="form-group">
                     {!! Form::label('photo', 'Add Photo', ['class' => 'col-md-3 control-label']) !!}

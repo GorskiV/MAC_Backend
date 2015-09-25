@@ -7,6 +7,7 @@ use App\Http\Requests\FeedbackRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class UserFeedbackController extends Controller
 {
@@ -54,15 +55,16 @@ class UserFeedbackController extends Controller
         $feedback->project_id=$request->projectID;
 
         $myStr = str_random(10);
-        $imageName = $request->name. '_' . $myStr .'_'.   \Auth::user()->id . '.' .$request->file('photo')->getClientOriginalExtension();
-        $imageName = $string = str_replace(' ', '', $imageName);
-        $imagePath = '/upload/images/' . $imageName;
-        $request->file('photo')->move(
-            base_path() . '/public/upload/images/', $imageName
-        );
+        if(Input::has('photo')){
+            $imageName = $request->name . '_' . $myStr . '_' . \Auth::user()->id . '.' . $request->file('photo')->getClientOriginalExtension();
+            $imageName = $string = str_replace(' ', '', $imageName);
+            $imagePath = '/upload/images/' . $imageName;
+            $request->file('photo')->move(
+                base_path() . '/public/upload/images/', $imageName
+            );
 
-        $feedback->photo = $imagePath;
-
+            $feedback->photo = $imagePath;
+        }
         if($feedback->save()) {
             return redirect('user/feedback');
         }else

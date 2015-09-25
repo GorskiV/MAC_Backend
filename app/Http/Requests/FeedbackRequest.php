@@ -24,7 +24,7 @@ class FeedbackRequest extends Request
     public function rules()
     {
         return [
-            'rating' => 'required',
+            'count' => 'required',
             'comment' => 'required',
         ];
     }
