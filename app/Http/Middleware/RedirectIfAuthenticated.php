@@ -35,7 +35,16 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next)
     {
         if ($this->auth->check()) {
-            return redirect('/home');
+            if($this->auth->user()->role_id==1){
+                return redirect('/admin');
+            }
+            if($this->auth->user()->role_id==2){
+                return redirect('/user');
+            }
+            if($this->auth->user()->role_id==3){
+                return redirect('/vendor');
+            }
+            return redirect('/');
         }
 
         return $next($request);

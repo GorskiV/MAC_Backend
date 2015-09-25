@@ -23,7 +23,7 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-//    protected $redirectPath = '/user';
+    protected $redirectPath = '/user';
 
     protected $loginPath = '/auth/login';
 
@@ -39,7 +39,7 @@ class AuthController extends Controller
             return redirect()->intended('/vendor');
         }
 
-        return redirect()->intended('/sdasj dsa;das');
+        return redirect()->intended('/');
     }
 
     /**
