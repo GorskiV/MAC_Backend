@@ -115,7 +115,7 @@ Route::group(['prefix' => 'userjson'], function() {
     Route::get('/user/feedback/{email}', 'WebServiceController@usersFeedbacks');
     Route::get('/user/info/{email}', 'WebServiceController@userInfo');
 
-    Route::get('/user/feedback/{score}/{comment}/{geoLat}/{geoLong}/{photoData}/{userEmail}/{projectId}', 'WebServiceController@userInfo');
+    Route::get('/user/feedback/{score}/{comment}/{geoLat}/{geoLong}/{photoData}/{userEmail}/{projectId}', 'WebServiceController@feedbackStore');
 });
 
 Route::get('authMobile/login/{email}/{password}', 'WebServiceController@getLogin');
