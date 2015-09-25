@@ -27,15 +27,11 @@
 
         <div class="clearfix"></div>
     </div>
-    <div class="col-md-6 col-xs-12 widget widget_tally_box">
-        <div class="x_panel">
-            <div class="x_content text-center">
-                <img src="{{URL::to('/')}}{{$project->photo}}" width="230" alt="">
+    <div class="col-md-12 col-xs-12">
+                <img src="{{URL::to('/')}}{{$project->photo}}" width="150" alt="">
                 <br><br>
-            </div>
-        </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-12">
     <div class="x_panel">
         <div class="x_title">
             <h2>Give Feedly</h2>
@@ -67,7 +63,7 @@
                 </div>
 
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <h4>Attach Media <small>You can provide additional media</small></h4>
                 <br>
                 <div class="form-group">
@@ -90,6 +86,56 @@
         {!! Form::close() !!}
     </div>
     </div>
+    <div class="col-md-12 col-xs-12  widget_tally_box">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2><b>My Feedlys for</b> {{$project->name}}</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content text-center">
+                <table id="dvData" class="table table-striped responsive-utilities jambo_table">
+                    <thead>
+                    <tr class="headings text-center">
+                        <th class="text-center">Rating</th>
+                        <th class="text-center">Comment</th>
+                        <th class="text-center">Rated At</th>
+                        <th class="text-center">Photo</th>
+                        <th class="text-center">Geolocation</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @if($feedbacks->count()>0)
+                        @foreach($feedbacks as $u)
+                            <tr class="pointer">
+                                <td class=" ">{{$u->rating}}</td>
+                                <td class=" ">{{$u->comment}}</td>
+                                <td class=" ">{{$u->created_at}}</td>
+                                <td class=" ">
+                                    @if($u->photo != null)
+                                        <a href="{{URL::to('/')}}{{$u->photo}}" alt=""><i class="fa fa-image"></i> Display Image</a>
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td class=" ">
+                                    @if($u->lat != null && $u->long != null)
+                                        <a href="http://maps.google.com/maps?z=18&q={{$u->lat}},{{$u->long}}" alt=""><i class="fa fa-map-marker"></i> Display Map</a>
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
+                    </tbody>
 
+                </table>
+                <div id="placeholder-div1"></div>
+
+
+
+            </div>
+        </div>
+    </div>
     </div>
 @endsection

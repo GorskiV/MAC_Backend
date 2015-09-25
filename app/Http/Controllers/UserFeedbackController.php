@@ -66,7 +66,7 @@ class UserFeedbackController extends Controller
             $feedback->photo = $imagePath;
         }
         if($feedback->save()) {
-            return redirect('user/feedback');
+            return redirect('user/feedback/'.$request->projectID);
         }else
             return 'no';
     }
@@ -87,7 +87,9 @@ class UserFeedbackController extends Controller
         foreach($users as $u){
             $projectUsers[] =  \App\User::find($u->user_id);
         }
-        return view('user.feedback.projectfeedback', compact('project', 'user'));
+        $feedbacks = \App\Feedback::where('user_id', '=', $user->id)->orWhere('project_id', '=', $id)->get();
+
+        return view('user.feedback.projectfeedback', compact('project', 'user', 'feedbacks'));
     }
 
     /**

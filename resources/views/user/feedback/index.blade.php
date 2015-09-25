@@ -34,14 +34,6 @@
                         @endif
                         {{$p->name}}
                     </h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><h5><i class="fa fa-star"></i></h5></li>
-                        <li><h5><i class="fa fa-star"></i></h5></li>
-                        <li><h5><i class="fa fa-star"></i></h5></li>
-                        <li><h5><i class="fa fa-star"></i></h5></li>
-                        <li><h5><i class="fa fa-star"></i></h5></li>
-
-                    </ul>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
