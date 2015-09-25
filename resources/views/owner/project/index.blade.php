@@ -42,6 +42,7 @@
                         <th class="text-center">Rating</th>
                         <th class="text-center">Comment</th>
                         <th class="text-center">Photo</th>
+                        <th class="text-center">Geolocation</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -57,11 +58,18 @@
                                 <td class=" ">{{$u->comment}}</td>
                                 <td class=" ">
                                     @if($u->photo != null)
-                                        <a href="{{URL::to('/')}}{{$u->photo}}" alt=""><i class="fa fa-image"></i></a>
+                                        <a href="{{URL::to('/')}}{{$u->photo}}" alt=""><i class="fa fa-image"></i> Display Image</a>
                                     @else
-
+                                        <i class="fa fa-"></i>
                                     @endif
                                 </td>
+                                    <td class=" ">
+                                        @if($u->lat != null && $u->long != null)
+                                            <a href="http://maps.google.com/maps?z=18&q={{$u->lat}},{{$u->long}}" alt=""><i class="fa fa-map"></i> Display Map</a>
+                                        @else
+
+                                        @endif
+                                    </td>
                             </tr>
                         @endforeach
                     @endif
@@ -94,7 +102,7 @@
                         @foreach($projectUsers as $u)
                             <tr class="pointer">
                                 <td class=" ">{{$u->email}}</td>
-                                <td class=" "><a href="mailto:{{$u->email}}"><i class="fa fa-envelope"></i></a></td>
+                                <td class=" "><a href="mailto:{{$u->email}}"><i class="fa fa-envelope"></i> Send Email</a></td>
                             </tr>
                         @endforeach
                     @endif
