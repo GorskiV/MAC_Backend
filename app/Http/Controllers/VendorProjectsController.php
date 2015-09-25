@@ -100,7 +100,6 @@ class VendorProjectsController extends Controller
             $projectUsers[] =  \App\User::find($u->user_id);
         }
 
-
         return view('owner.project.index', compact('project', 'user', 'projectUsers', 'feedbacks'));
     }
 

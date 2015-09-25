@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Feddly</title>
+    <title>Feedly</title>
 
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('fonts/css/font-awesome.min.css') }}">
@@ -21,6 +21,8 @@
 
     <script src="{!! asset('js/jquery.min.js') !!}"></script>
     <script src="{!! asset('js/nprogress.js') !!}"></script>
+    <script src="https://apis.google.com/js/client:plusone.js" type="text/javascript"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script>
         NProgress.start();
     </script>
@@ -61,14 +63,14 @@
         </div>
 
         @section('nav')
-        Top navigation
-        @show
+            Top navigation
+            @show
 
-        <!-- page content -->
-        <div class="right_col" role="main">
-            @yield('content')
-        </div>
-        <!-- /page content -->
+                    <!-- page content -->
+            <div class="right_col" role="main">
+                @yield('content')
+            </div>
+            <!-- /page content -->
 
     </div>
 
